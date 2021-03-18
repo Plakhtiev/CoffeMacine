@@ -1,9 +1,6 @@
 #include <iostream>
 #include <cstdint>
-#include "ICoffeeMachineRecipe.h"
-#include "ICoffeeMachineRecipe.h"
 #include "CoffeeMachine.h"
-#include "Recipe.h"
 
 ICoffeeMachine& CreateCoffeeMachine() {
 	Recipe* americano;
