@@ -4,7 +4,7 @@
 
 ICoffeeMachine& CreateCoffeeMachine() {
 	Recipe* americano;
-	americano = new Recipe(50, 1, 0, "americano");
+	americano = new Recipe(0, 1, 0, "americano");
 
 	Recipe* latte;
 	latte = new Recipe(80, 3, 30, "latte");
@@ -20,22 +20,13 @@ int main()
 
 	ICoffeeMachine& machine = CreateCoffeeMachine();
 
+	try
+	{
 	machine.MakeAmericano();
+	}
+	catch (const std::exception& error)
+	{
+		std::cout << error.what() << std::endl;
+	}
 
-	CoffeeMachine mach(1000, 1000, 1000);
-
-	Recipe* americano;
-	americano = new Recipe(20, 1, 0, "americano");
-
-	Recipe* latte;
-	latte = new Recipe(180, 6, 80, "latte");
-
-	mach.SetRecipe(americano);
-	mach.SetRecipe(latte);
-	mach.MakeAmericano();
-	mach.MakeLatte();
-
-	std::cout << "GetWater - " << mach.GetWater() << std::endl;
-	std::cout << "GetMilk - " << mach.GetMilk() << std::endl;
-	std::cout << "GetSugar - " << mach.GetSugar() << std::endl;
 }
