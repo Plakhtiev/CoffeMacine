@@ -18,28 +18,4 @@ ICoffeeMachine& CreateCoffeeMachine() {
 int main()
 {
 	CoffeeMachine mach(1000, 1000, 1000);
-/*
-	try
-	{
-		ICoffeeMachine& machine = CreateCoffeeMachine();
-		machine.MakeAmericano();
-	}
-	catch (const std::exception& error)
-	{
-		std::cout << error.what() << std::endl;
-	}
-
-	try
-	{
-		mach.MakeAmericano();
-		mach.MakeLatte();
-	}
-	catch (const std::exception& error)
-	{
-		std::cout << error.what() << std::endl;
-	}
-
-	std::cout << "GetWater - " << mach.GetWater() << std::endl;
-	std::cout << "GetMilk - " << mach.GetMilk() << std::endl;
-	std::cout << "GetSugar - " << mach.GetSugar() << std::endl;*/
 }
