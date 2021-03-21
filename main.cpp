@@ -18,7 +18,7 @@ ICoffeeMachine& CreateCoffeeMachine() {
 int main()
 {
 	CoffeeMachine mach(1000, 1000, 1000);
-
+/*
 	try
 	{
 		ICoffeeMachine& machine = CreateCoffeeMachine();
@@ -41,5 +41,5 @@ int main()
 
 	std::cout << "GetWater - " << mach.GetWater() << std::endl;
 	std::cout << "GetMilk - " << mach.GetMilk() << std::endl;
-	std::cout << "GetSugar - " << mach.GetSugar() << std::endl;
+	std::cout << "GetSugar - " << mach.GetSugar() << std::endl;*/
 }
