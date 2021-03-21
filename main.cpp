@@ -1,9 +1,6 @@
 #include <iostream>
 #include <cstdint>
-#include "ICoffeeMachineRecipe.h"
-#include "ICoffeeMachineRecipe.h"
 #include "CoffeeMachine.h"
-#include "Recipe.h"
 
 ICoffeeMachine& CreateCoffeeMachine() {
 	Recipe* americano;
@@ -20,8 +17,29 @@ ICoffeeMachine& CreateCoffeeMachine() {
 
 int main()
 {
-	ICoffeeMachine& machine = CreateCoffeeMachine();
+	CoffeeMachine mach(1000, 1000, 1000);
 
-	machine.MakeAmericano();
-	
+	try
+	{
+		ICoffeeMachine& machine = CreateCoffeeMachine();
+		machine.MakeAmericano();
+	}
+	catch (const std::exception& error)
+	{
+		std::cout << error.what() << std::endl;
+	}
+
+	try
+	{
+		mach.MakeAmericano();
+		mach.MakeLatte();
+	}
+	catch (const std::exception& error)
+	{
+		std::cout << error.what() << std::endl;
+	}
+
+	std::cout << "GetWater - " << mach.GetWater() << std::endl;
+	std::cout << "GetMilk - " << mach.GetMilk() << std::endl;
+	std::cout << "GetSugar - " << mach.GetSugar() << std::endl;
 }

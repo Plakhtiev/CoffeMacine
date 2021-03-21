@@ -8,6 +8,15 @@ CoffeeMachine::CoffeeMachine(uint32_t water, uint32_t sugar, uint32_t milk)
 	m_currContainMachine.milk = milk;
 }
 
+CoffeeMachine::~CoffeeMachine()
+{
+	for (int i = 0; i < 10; ++i) {
+		if (!m_recipes[i]) {
+		delete m_recipes[i];
+		}
+	}
+}
+
 // Inherited via ICoffeeMachine
 
 bool CoffeeMachine::SetRecipe(Recipe* recipe)
@@ -18,7 +27,7 @@ bool CoffeeMachine::SetRecipe(Recipe* recipe)
 			return true;
 		}
 	}
-	return false;
+	throw ErrorCoffeeMachine("Recipe list is full", 23);
 }
 
 void CoffeeMachine::SetWater(uint32_t water) {
@@ -45,18 +54,24 @@ uint32_t CoffeeMachine::GetMilk() {
 	return m_currContainMachine.milk;
 }
 
+uint32_t CoffeeMachine::GetRecipesAmount()
+{
+	return m_recipesAmount;
+}
+
 bool CoffeeMachine::MakeAmericano() {
-	return DecreaseIngredients("americano");
+	static const char* nameDrink = "americano";
+	return DecreaseIngredients(nameDrink);
 }
 
 bool CoffeeMachine::MakeLatte() {
-	return DecreaseIngredients("latte");
+	static const char* nameDrink = "latte";
+	return DecreaseIngredients(nameDrink);
 }
 
-bool CoffeeMachine::DecreaseIngredients(std::string nameOfRecipes) {
+bool CoffeeMachine::DecreaseIngredients(const std::string& nameOfRecipes) {
 	if (!m_recipes[0]) {
-		std::cout << "No recipe has baan added" << std::endl;
-		return false;
+		throw ErrorCoffeeMachine("No recipe has been added", 21);
 	}
 	for (int i = 0; m_recipes[i]; ++i) {
 		if (nameOfRecipes == m_recipes[i]->GetNameOfDrink()) {
@@ -69,11 +84,9 @@ bool CoffeeMachine::DecreaseIngredients(std::string nameOfRecipes) {
 				return true;
 			}
 			else {
-				std::cout << "Not enough ingredients for " << m_recipes[i]->GetNameOfDrink() << std::endl;
-				return false;
+				throw ErrorCoffeeMachine("Not enough ingredients", 11);
 			}
 		}
 	}
-
-	return false;
+	throw ErrorCoffeeMachine("No recipe for such a drink", 22);
 }

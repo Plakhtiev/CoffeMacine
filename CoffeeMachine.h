@@ -2,6 +2,7 @@
 #include "ICoffeeMachine.h"
 #include "ICoffeeMachineRecipe.h"
 #include "Recipe.h"
+#include "ErrorCoffeeMachine.h"
 
 struct IngredientsInMachine
 {
@@ -16,6 +17,7 @@ class CoffeeMachine :
 {
 public:
 	CoffeeMachine(uint32_t water, uint32_t sugar, uint32_t milk);
+	~CoffeeMachine();
 
 	// Inherited via ICoffeeMachine
 	bool SetRecipe(Recipe* recipe) override;
@@ -32,12 +34,15 @@ public:
 
 	uint32_t GetMilk();
 
+	uint32_t GetRecipesAmount();
+
 	bool MakeAmericano();
 	bool MakeLatte();
 private:
-	bool DecreaseIngredients(std::string nametRecipes);
+	bool DecreaseIngredients(const std::string& nametRecipes);
 
 private:
+	const uint32_t m_recipesAmount = 10;
 	IngredientsInMachine m_currContainMachine = {};
 	Recipe* m_recipes[10] = {};
 };
