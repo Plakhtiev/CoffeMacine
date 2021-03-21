@@ -17,8 +17,5 @@ ICoffeeMachine& CreateCoffeeMachine() {
 
 int main()
 {
-	ICoffeeMachine& machine = CreateCoffeeMachine();
-
-	machine.MakeAmericano();
-	
+	CoffeeMachine mach(1000, 1000, 1000);
 }
