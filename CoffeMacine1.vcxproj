@@ -141,6 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CoffeeMachine.cpp" />
+    <ClCompile Include="ErrorCoffeeMachine.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ICoffeeMachine.cpp" />
     <ClCompile Include="ICoffeeMachineRecipe.cpp" />
@@ -148,6 +149,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CoffeeMachine.h" />
+    <ClInclude Include="ErrorCoffeeMachine.h" />
     <ClInclude Include="ICoffeeMachine.h" />
     <ClInclude Include="ICoffeeMachineRecipe.h" />
     <ClInclude Include="Recipe.h" />
