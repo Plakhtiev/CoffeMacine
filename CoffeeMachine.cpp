@@ -21,6 +21,12 @@ CoffeeMachine::~CoffeeMachine()
 
 bool CoffeeMachine::SetRecipe(Recipe* recipe)
 {
+	if (recipe->GetMilk() > m_currContainMachine.milk ||
+		recipe->GetSugar() > m_currContainMachine.sugar ||
+		recipe->GetWater() > m_currContainMachine.water) {
+		throw ErrorCoffeeMachine("The amount of ingredients for the recipe exceeds the capacity of the machine", 24);
+	}
+
 	for (int i = 0; i < 10; ++i) {
 		if (!m_recipes[i]) {
 			m_recipes[i] = recipe;
