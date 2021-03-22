@@ -42,7 +42,7 @@ private:
 	bool DecreaseIngredients(const std::string& nametRecipes);
 
 private:
-	const uint32_t m_recipesAmount = 10;
+	static const uint32_t m_recipesAmount = 10;
 	IngredientsInMachine m_currContainMachine = {};
-	Recipe* m_recipes[10] = {};
+	Recipe* m_recipes[m_recipesAmount] = {};
 };

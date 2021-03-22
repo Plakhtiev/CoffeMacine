@@ -27,7 +27,7 @@ bool CoffeeMachine::SetRecipe(Recipe* recipe)
 		throw ErrorCoffeeMachine("The amount of ingredients for the recipe exceeds the capacity of the machine", 24);
 	}
 
-	for (int i = 0; i < 10; ++i) {
+	for (int i = 0; i < m_recipesAmount; ++i) {
 		if (!m_recipes[i]) {
 			m_recipes[i] = recipe;
 			return true;
